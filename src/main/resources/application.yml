@@ -1,0 +1,55 @@
+#默认使用配置  #activemq
+spring:
+  profiles:
+    active: @activatedProperties@
+#公共配置与profiles选择无关
+mybatis-plus:
+  typeAliasesPackage: com.fengxv.platform.entity
+  mapperLocations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com.cn.commodity.dao : debug
+
+
+---
+#开发配置
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    #url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: yang156122
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+
+---
+#测试配置
+spring:
+  profiles: test
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    #url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: yang156122
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+
+---
+#生产配置
+spring:
+  profiles: prod
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    #url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: yang156122
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
